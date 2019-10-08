@@ -33,7 +33,7 @@ def main():
         time.sleep(2)
 
         counter = counter +1
-        systemd.daemon.notify('READY=1')
+        # systemd.daemon.notify('READY=1')
         continue
 
 
