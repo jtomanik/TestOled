@@ -9,7 +9,7 @@ def main():
     serial = i2c(port=0, address=0x3C)
     device = ssd1327(serial, 128, 128)
     img_path = os.path.abspath(os.path.join(os.path.dirname(__file__),'images', 'oled.network.png'))
-    qr_code = Image.open(img_path).convert("RGBA")
+    qr_code = Image.open(img_path).convert("RGBA").rotate(180)
 
     background = Image.new("RGBA", device.size, "black")
     posn = ((device.width - qr_code.width) // 2, 0)
