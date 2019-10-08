@@ -14,9 +14,11 @@ def main():
     background = Image.new("RGBA", device.size, "black")
     posn = ((device.width - qr_code.width) // 2, 0)
 
+    background.paste(qr_code, posn)
+    device.display(background.convert(device.mode))
+
     while True:
-        background.paste(qr_code, posn)
-        device.display(background.convert(device.mode))
+        continue
 
 
 if __name__ == "__main__":
