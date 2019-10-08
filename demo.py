@@ -1,5 +1,6 @@
 import time
 import os.path
+import systemd.daemon
 from PIL import Image
 from luma.core.interface.serial import i2c
 from luma.core.render import canvas
@@ -32,6 +33,7 @@ def main():
         time.sleep(2)
 
         counter = counter +1
+        systemd.daemon.notify('READY=1')
         continue
 
 
