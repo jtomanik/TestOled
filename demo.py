@@ -12,9 +12,12 @@ def main():
     device = ssd1327(serial, 128, 128)
 
     images = [
-        "oled.qr.png",
+        "oled.eth.png",
+        "oled.box.png",
+        "oled.hardware.png",
+        "oled.99.png",
         "oled.network.png",
-        "oled.hardware.png"
+        "oled.qr.png"
     ]
 
     counter = 0
@@ -33,7 +36,6 @@ def main():
         time.sleep(2)
 
         counter = counter +1
-        # systemd.daemon.notify('READY=1')
         continue
 
 
