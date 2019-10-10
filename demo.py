@@ -1,6 +1,5 @@
 import time
 import os.path
-import systemd.daemon
 from PIL import Image, ImageSequence
 from luma.core.sprite_system import framerate_regulator
 from luma.core.interface.serial import i2c
