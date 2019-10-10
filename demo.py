@@ -51,7 +51,8 @@ def maingif():
         draw.rectangle(device.bounding_box, outline="white", fill="black")
         draw.text((30, 40), "Hello World", fill="white")
 
-    # while True:
+    while True:
+        continue
     #     for frame in ImageSequence.Iterator(gif):
     #         with regulator:
     #             background = Image.new("RGB", device.size, "white")
