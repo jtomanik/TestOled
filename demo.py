@@ -46,15 +46,12 @@ def maingif():
     regulator = framerate_regulator(fps=1)
     img_path = os.path.abspath(os.path.join(os.path.dirname(__file__), 'images', 'oled.gif'))
     gif = Image.open(img_path)
-    size = [min(*device.size)] * 2
-    posn = ((device.width - size[0]) // 2, device.height - size[1])
 
     while True:
         for frame in ImageSequence.Iterator(gif):
             with regulator:
                 background = Image.new("RGB", device.size, "white")
-                background.paste(frame.resize(size, resample=Image.LANCZOS), posn)
-                background.rotate(90)
+                background.paste(frame.rotate(180))
                 device.display(background.convert(device.mode))
 
 
