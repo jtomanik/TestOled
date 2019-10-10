@@ -41,7 +41,7 @@ def main():
 
 def maingif():
     serial = i2c(port=0, address=0x3C)
-    device = ssd1327(serial, 128, 128)
+    device = ssd1327(serial)
 
     regulator = framerate_regulator(fps=1)
     img_path = os.path.abspath(os.path.join(os.path.dirname(__file__), 'images', 'oled.gif'))
@@ -49,7 +49,7 @@ def maingif():
 
     with canvas(device) as draw:
         draw.rectangle(device.bounding_box, outline="white", fill="black")
-        draw.text((30, 40), "Hello World", fill="white")
+        draw.rectangle([(64, 64), (81, 81)], outline="white", fill="white")
 
     while True:
         continue
