@@ -55,6 +55,7 @@ def maingif():
             with regulator:
                 background = Image.new("RGB", device.size, "white")
                 background.paste(frame.resize(size, resample=Image.LANCZOS), posn)
+                background.rotate(180)
                 device.display(background.convert(device.mode))
 
 
