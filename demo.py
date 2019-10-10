@@ -1,7 +1,8 @@
 import time
 import os.path
 import systemd.daemon
-from PIL import Image
+from PIL import Image, ImageSequence
+from luma.core.sprite_system import framerate_regulator
 from luma.core.interface.serial import i2c
 from luma.core.render import canvas
 from luma.oled.device import ssd1327
@@ -39,8 +40,27 @@ def main():
         continue
 
 
+def maingif():
+    serial = i2c(port=0, address=0x3C)
+    device = ssd1327(serial, 128, 128)
+
+    regulator = framerate_regulator(fps=10)
+    img_path = os.path.abspath(os.path.join(os.path.dirname(__file__),
+        'images', 'oled.gif'))
+    banana = Image.open(img_path)
+    size = [min(*device.size)] * 2
+    posn = ((device.width - size[0]) // 2, device.height - size[1])
+
+    while True:
+        for frame in ImageSequence.Iterator(banana):
+            with regulator:
+                background = Image.new("RGB", device.size, "white")
+                background.paste(frame.resize(size, resample=Image.LANCZOS), posn)
+                device.display(background.convert(device.mode))
+
+
 if __name__ == "__main__":
     try:
-        main()
+        maingif()
     except KeyboardInterrupt:
         pass
