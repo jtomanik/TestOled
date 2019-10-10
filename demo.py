@@ -43,7 +43,7 @@ def maingif():
     serial = i2c(port=0, address=0x3C)
     device = ssd1327(serial, 128, 128)
 
-    regulator = framerate_regulator(fps=10)
+    regulator = framerate_regulator(fps=1)
     img_path = os.path.abspath(os.path.join(os.path.dirname(__file__),
         'images', 'oled.gif'))
     banana = Image.open(img_path)
