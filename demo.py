@@ -47,17 +47,17 @@ def maingif():
     img_path = os.path.abspath(os.path.join(os.path.dirname(__file__), 'images', 'oled.gif'))
     gif = Image.open(img_path)
 
-    with canvas(device) as draw:
-        draw.rectangle(device.bounding_box, outline="white", fill="black")
-        draw.rectangle([(64, 64), (81, 81)], outline="white", fill="white")
+    # with canvas(device) as draw:
+    #     draw.rectangle(device.bounding_box, outline="white", fill="black")
+    #     draw.rectangle([(64, 64), (81, 81)], outline="white", fill="white")
 
     while True:
-        continue
-    #     for frame in ImageSequence.Iterator(gif):
-    #         with regulator:
-    #             background = Image.new("RGB", device.size, "white")
-    #             background.paste(frame.rotate(180))
-    #             device.display(background.convert(device.mode))
+        # continue
+        for frame in ImageSequence.Iterator(gif):
+            with regulator:
+                background = Image.new("RGB", device.size, "white")
+                background.paste(frame.rotate(180))
+                device.display(background.convert(device.mode))
 
 
 if __name__ == "__main__":
